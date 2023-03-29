@@ -1,8 +1,10 @@
 # Example IPC 2023 Learning Tracks submission
 
-This repo contains the code for Fast Downward SMAC, which participated in the
-IPC 2014 Learning Tracks. For 2023, it serves as a baseline and an example for
-how to create learner and planner submissions.
+This repository contains the code for _Progressive Generalized Planner_, 
+a minor refactored version of the framework published
+in _"Scaling-up generalized planning as heuristic search with landmarks"_ (SoCS 2022).
+For 2023, it serves as a baseline and an example for how to create learner and planner
+submissions.
 
 ## Install Apptainer
 
