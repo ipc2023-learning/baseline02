@@ -22,4 +22,4 @@ See also https://apptainer.org/docs/admin/main/installation.html#install-ubuntu-
 ## Build and run planning image
 
     apptainer build plan.img Apptainer.pgp.plan
-    ./plan.img dck.prog domains/gripper/domain.pddl gripper/p-10-0.pddl plan.10
+    ./plan.img dck.prog domains/gripper/domain.pddl domains/gripper/p-10-0.pddl plan.10
