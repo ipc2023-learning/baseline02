@@ -1,9 +1,9 @@
 # Example IPC 2023 Learning Tracks submission
 
-This repository contains the code for _Progressive Generalized Planner_, 
-a minor refactored version of the framework published
+This repository contains the code for _Progressive Generalized Planner_,
+a slightly refactored version of the framework published
 in _"Scaling-up generalized planning as heuristic search with landmarks"_ (SoCS 2022).
-For 2023, it serves as a baseline and an example for how to create learner and planner
+For IPC 2023, it serves as a baseline and an example for how to create learner and planner
 submissions.
 
 ## Install Apptainer
