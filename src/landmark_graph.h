@@ -202,7 +202,7 @@ public:
                     // [ToDo] shouldn't new orderings between pre and landmark_id be considered?
                     // Remove obsolete landmark
                     delete (*it);
-                    _landmarks.erase(it );
+                    _landmarks.erase(it++);
                 }
                 else it++;
             }
@@ -261,6 +261,7 @@ if ( INFO ) cout << "[INFO] New goal landmark: " << l->toString(_dom->getStateDe
         while( !_queue.empty() ){
             Landmark *current_landmark = _queue.front();
             _queue.pop();
+            if(_landmarks.find(current_landmark) == _landmarks.end()) continue; // previously deleted landmark
             auto fact_ids = current_landmark->getFactIDs();
 if( INFO ) cout << "[INFO] Current landmark: " << current_landmark->toString( _dom->getStateDescriptor(), _rg) ;
 
