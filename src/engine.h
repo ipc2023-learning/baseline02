@@ -103,7 +103,8 @@ protected:
 
 class BFS : public Engine{
 public:
-	BFS(int program_lines, GeneralizedDomain *gd, GeneralizedPlanningProblem *gpp) : Engine( program_lines, gd, gpp ){
+	BFS(int program_lines, GeneralizedDomain *gd, GeneralizedPlanningProblem *gpp, std::string &outfile) :
+        Engine( program_lines, gd, gpp ), _outfile(outfile){
 	}
 	
 	~BFS() override{
@@ -363,10 +364,19 @@ public:
 				
 				if( isGoal( childs[ i ], progressive ) ){
 					if( progressive ){
+                        int dk_counter = 0;
                         cout << "[INFO] Possible solution found at node id " << childs[i]->getID() << " when solving instance ids:";
                         for( int aux_id = 0; aux_id < _gpp->getNumInstances(); aux_id++ )
-                            if( _gpp->isInstanceActive(aux_id) ) cout << " #" << aux_id;
+                            if( _gpp->isInstanceActive(aux_id) ) {
+                                cout << " #" << aux_id;
+                                ++dk_counter;
+                            }
                         cout << endl << childs[i]->toString() << endl;
+
+                        // Print possible solution as a DK
+                        ofstream ofs_prog( _outfile + "." + std::to_string(dk_counter) );
+                        ofs_prog << childs[i]->getProgram()->toString( false );
+                        ofs_prog.close();
 					}
 					// if the search is not incremental, or if the program solves all instances finish
 					if( not progressive or isGoal( childs[i], false ) ){
@@ -427,6 +437,7 @@ public:
 	
 private:
 	priority_queue< Node*, vector< Node* >, CmpNodes > _open;
+    std::string _outfile;
 };
 
 #endif

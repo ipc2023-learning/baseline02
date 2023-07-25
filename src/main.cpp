@@ -140,7 +140,7 @@ int main(  int argc, const char* argv[] ){
     time( &landmarks_time );
     cout << "[INFO] Landmarks created. [" << difftime( landmarks_time, gd_time ) << "]" << endl;
 
-	auto *engine = new BFS( program_lines, gd, gpp );
+	auto *engine = new BFS( program_lines, gd, gpp, outfile );
     if( preprocess_landmarks ) {
         engine->setLandmarks(landmark_graphs);
     }
@@ -193,10 +193,12 @@ int main(  int argc, const char* argv[] ){
 	
 	if( res != nullptr ){
 		Program *p = res->getProgram();
-		
+
+        /*
 		ofstream ofs_prog( outfile );
 		ofs_prog << p->toString( false );
 		ofs_prog.close();
+        */
 		
 		output += "[INFO] SOLUTION FOUND!!!\n";
         output += "[INFO] Expanded nodes: " + to_string( engine->getExpanded() ) + "\n";
